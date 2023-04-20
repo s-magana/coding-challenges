@@ -1,0 +1,29 @@
+// The Stanton measure of an array is computed as follows: count the number of occurences for value 1 in the array. Let this count be n. The Stanton measure is the number of times that n appears in the array.
+
+// Write a function which takes an integer array and returns its Stanton measure.
+
+// Examples
+// The Stanton measure of [1, 4, 3, 2, 1, 2, 3, 2] is 3, because 1 occurs 2 times in the array and 2 occurs 3 times.
+
+// The Stanton measure of [1, 4, 1, 2, 11, 2, 3, 1] is 1, because 1 occurs 3 times in the array and 3 occurs 1 time.
+
+// My solutions:
+function stantonMeasure(arr) {
+    let count1 = 0
+    let count2 = 0
+    let oneArr = arr.forEach(e => e === 1 ? count1++ : e)
+    let twoArr = arr.map(f => f === count1 ? count2++ : f)
+    return count2
+}
+
+function stantonMeasure(arr) {
+    const count = n => arr.filter(x => x === n).length;
+    return count(count(1));
+}
+
+function stantonMeasure(array){  
+    const count = array.filter(num => num === 1).length;
+    const stanton = array.filter(num => num === count).length;
+  
+    return stanton;
+}
